@@ -1,0 +1,98 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f4fff7;
+  color: #333;
+}
+
+.header {
+  background: #2e7d32;
+  color: white;
+  padding: 15px;
+  text-align: center;
+}
+
+.header nav a {
+  color: white;
+  margin: 0 15px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.header nav a.active,
+.header nav a:hover {
+  text-decoration: underline;
+}
+
+.payment-container {
+  max-width: 500px;
+  margin: 40px auto;
+  background: white;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.payment-container h2 {
+  color: #2e7d32;
+  margin-bottom: 10px;
+}
+
+.payment-container label {
+  display: block;
+  margin: 10px 0 5px;
+  font-weight: bold;
+}
+
+.payment-container input,
+.payment-container select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.btn {
+  margin-top: 15px;
+  width: 100%;
+  background: #2e7d32;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: #256728;
+}
+
+#status-message {
+  margin-top: 20px;
+  text-align: center;
+}
+
+#status-message .loading {
+  color: #ff9800;
+  font-weight: bold;
+}
+
+#status-message .success {
+  color: #2e7d32;
+  font-weight: bold;
+}
+
+#status-message .error {
+  color: #d32f2f;
+  font-weight: bold;
+}
+
+.footer {
+  text-align: center;
+  padding: 15px;
+  background: #2e7d32;
+  color: white;
+  margin-top: 40px;
+}

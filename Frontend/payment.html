@@ -1,0 +1,85 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Harvest Hub - Payment</title>
+  <link rel="stylesheet" href="payment.css">
+</head>
+<body>
+  <header class="header">
+    <h1>🌱 Harvest Hub</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="tracking.html">Tracking</a>
+      <a href="payment.html" class="active">Payment</a>
+    </nav>
+  </header>
+
+  <section class="payment-container">
+    <h2>Complete Your Payment</h2>
+    <p>Please choose your payment method and enter the details below:</p>
+
+    <form id="payment-form">
+      <label for="amount">Amount (PKR)</label>
+      <input type="number" id="amount" name="amount" placeholder="Enter amount" required>
+
+      <label for="method">Payment Method</label>
+      <select id="method" name="method" required>
+        <option value="">-- Select Payment Method --</option>
+        <option value="jazzcash">JazzCash</option>
+        <option value="easypaisa">EasyPaisa</option>
+      </select>
+
+      <button type="submit" class="btn">Pay Now</button>
+    </form>
+
+    <div id="status-message"></div>
+  </section>
+
+  <footer class="footer">
+    <p>&copy; 2025 Harvest Hub | Empowering Farmers</p>
+  </footer>
+
+  <script>
+    const form = document.getElementById("payment-form");
+    const statusMessage = document.getElementById("status-message");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const amount = document.getElementById("amount").value;
+      const method = document.getElementById("method").value;
+
+      if (!amount || !method) {
+        statusMessage.innerHTML = "<p class='error'>⚠ Please fill all fields</p>";
+        return;
+      }
+
+      statusMessage.innerHTML = "<p class='loading'>⏳ Processing your payment...</p>";
+
+      try {
+        const response = await fetch("http://localhost:5000/create-payment", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ amount, method })
+        });
+        const result = await response.json();
+
+        if (result.pp_ResponseCode === "000") {
+          statusMessage.innerHTML = "<p class='success'>✅ Redirecting to payment gateway...</p>";
+          setTimeout(() => {
+            window.location.href = result.pp_RedirectURL;
+          }, 2000);
+        } else {
+          statusMessage.innerHTML = "<p class='error'>❌ Payment Failed: " + result.pp_ResponseMessage + "</p>";
+        }
+      } catch (error) {
+        statusMessage.innerHTML = "<p class='error'>⚠ Error connecting to server</p>";
+      }
+    });
+  </script>
+</body>
+</html>
+```

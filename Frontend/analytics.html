@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Harvest Hub - Analytics</title>
+  <link rel="stylesheet" href="analytics.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <!-- Navbar -->
+  <div class="navbar">
+    <h1>Harvest Hub</h1>
+    <div>
+      <a href="farmer.html">Farmer Dashboard</a>
+      <a href="buyer.html">Buyer Dashboard</a>
+      <a href="ngo.html">NGO Dashboard</a>
+      <a href="analytics.html">Analytics</a>
+      <a href="index.html">Logout</a>
+    </div>
+  </div>
+
+  <div class="container">
+    <h2>📊 Analytics Overview</h2>
+
+    <div class="chart-container">
+      <canvas id="salesChart"></canvas>
+    </div>
+
+    <div class="chart-container">
+      <canvas id="donationChart"></canvas>
+    </div>
+
+    <div class="chart-container">
+      <canvas id="barterChart"></canvas>
+    </div>
+  </div>
+
+  <script src="analytics.js"></script>
+</body>
+</html>

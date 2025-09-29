@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Tracking - Harvest Hub</title>
+  <link rel="stylesheet" href="order-tracking.css">
+</head>
+<body>
+  <!-- Navbar -->
+  <div class="navbar">
+    <h1>Harvest Hub</h1>
+    <div>
+      <a href="index.html">Home</a>
+      <a href="login.html">Login</a>
+      <a href="register.html">Register</a>
+    </div>
+  </div>
+
+  <!-- Main -->
+  <div class="container">
+    <h2>Track Your Order</h2>
+    <form class="tracking-form" id="trackingForm">
+      <input type="text" id="orderId" placeholder="Enter your Order ID..." required>
+      <button type="submit">Track</button>
+    </form>
+
+    <!-- Progress bar -->
+    <div class="progress-container" id="progressTracker">
+      <div class="progress-step" id="step1">
+        <div class="circle">1</div>
+        <p>Ordered</p>
+      </div>
+      <div class="progress-step" id="step2">
+        <div class="circle">2</div>
+        <p>Packed</p>
+      </div>
+      <div class="progress-step" id="step3">
+        <div class="circle">3</div>
+        <p>Shipped</p>
+      </div>
+      <div class="progress-step" id="step4">
+        <div class="circle">4</div>
+        <p>Delivered</p>
+      </div>
+    </div>
+
+    <!-- Order details -->
+    <div class="order-details" id="orderDetails">
+      <h3>Order Details</h3>
+      <p><strong>Order ID:</strong> <span id="detailOrderId"></span></p>
+      <p><strong>Farmer:</strong> <span id="detailFarmer"></span></p>
+      <p><strong>Buyer:</strong> <span id="detailBuyer"></span></p>
+      <p><strong>Item:</strong> <span id="detailItem"></span></p>
+      <p><strong>Quantity:</strong> <span id="detailQty"></span></p>
+      <p><strong>Price:</strong> <span id="detailPrice"></span></p>
+    </div>
+  </div>
+
+  <script src="order-tracking.js"></script>
+</body>
+</html>

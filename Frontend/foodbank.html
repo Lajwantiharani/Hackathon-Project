@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Harvest Hub - Community Food Bank</title>
+  <link rel="stylesheet" href="foodbank.css">
+  <script src="https://cdn.jsdelivr.net/npm/qrcodejs/qrcode.min.js"></script>
+</head>
+<body>
+  <header class="header">
+    <h1>🌱 Harvest Hub</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="tracking.html">Tracking</a>
+      <a href="payment.html">Payment</a>
+      <a href="foodbank.html" class="active">Food Bank</a>
+    </nav>
+  </header>
+
+  <section class="foodbank-container">
+    <h2>🍎 Community Food Bank</h2>
+    <p>Here you can view all donations made by farmers and community members. Scan the QR to verify authenticity.</p>
+
+    <div class="donations-list" id="donations-list">
+      <!-- Donations will be inserted here dynamically -->
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>&copy; 2025 Harvest Hub | Empowering Communities</p>
+  </footer>
+
+  <script>
+    const donations = [
+      { donor: "Ali Farmer", item: "20kg Tomatoes", date: "2025-09-28", id: "DON123" },
+      { donor: "Sara Grower", item: "15kg Potatoes", date: "2025-09-29", id: "DON124" },
+      { donor: "Community Garden", item: "10kg Mangoes", date: "2025-09-30", id: "DON125" }
+    ];
+
+    const donationsList = document.getElementById("donations-list");
+
+    donations.forEach(donation => {
+      const card = document.createElement("div");
+      card.className = "donation-card";
+
+      card.innerHTML = `
+        <h3>${donation.item}</h3>
+        <p><strong>Donor:</strong> ${donation.donor}</p>
+        <p><strong>Date:</strong> ${donation.date}</p>
+        <div class="qr-code" id="qr-${donation.id}"></div>
+      `;
+
+      donationsList.appendChild(card);
+
+      // Generate QR Code
+      new QRCode(document.getElementById("qr-" + donation.id), {
+        text: `Donation ID: ${donation.id} | Item: ${donation.item} | Donor: ${donation.donor}`,
+        width: 100,
+        height: 100
+      });
+    });
+  </script>
+</body>
+</html>
